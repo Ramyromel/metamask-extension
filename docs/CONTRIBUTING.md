@@ -1,16 +1,8 @@
-# Documentation
+# Contributing to MetaMask
 
-These docs relate to how to contribute to the MetaMask project itself.
+Thank you for your interest in contributing to the MetaMask Browser Extension! This document provides guidelines and instructions to help you navigate the repository and contribute effectively.
 
-You can find the latest version of MetaMask on [our official website](https://metamask.io/).
-
-For help using MetaMask, visit our [User Support Site](https://support.metamask.io/).
-
-For up to the minute news, follow our [Twitter](https://twitter.com/metamask_io) or [Medium](https://medium.com/metamask) pages.
-
-To learn how to develop MetaMask-compatible applications, visit our [Developer Docs](https://metamask.github.io/metamask-docs/).
-
-## Repository Structure
+## How to Navigate the Repository
 
 The MetaMask Browser Extension repository is organized into several directories, each serving a specific purpose. Here is a brief description of each directory:
 
@@ -22,6 +14,10 @@ The MetaMask Browser Extension repository is organized into several directories,
 - `shared`: Contains shared constants, modules, and utilities used across the project.
 - `test`: Contains test data, helpers, and end-to-end tests for the project.
 - `ui`: Contains the React components, hooks, contexts, and styles used in the MetaMask extension's user interface.
+
+## Relevant Documentation
+
+Here are some links to relevant documentation files that will help you get started:
 
 - [How to add custom build to Chrome](./add-to-chrome.md)
 - [How to add custom build to Firefox](./add-to-firefox.md)
