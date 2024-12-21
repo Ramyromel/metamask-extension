@@ -210,3 +210,7 @@ https://github.com/MetaMask/core/issues/413
 https://github.com/MetaMask/metamask-extension/pull/17056/files#r1064860162
 
 https://github.com/testjavascript/nodejs-integration-tests-best-practices
+
+## Updating Dependencies Before Running Tests
+
+Before running tests, make sure to update dependencies by running `yarn install`.

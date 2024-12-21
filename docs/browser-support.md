@@ -7,6 +7,8 @@ MetaMask's browser support policy is to support:
 
 We try to support browser forks as well (aligned with supported Chrome/Firefox releases), but we don't actively test them.
 
+Note: Before testing, make sure to update dependencies by running `yarn install`.
+
 ## Providing notice of minimum supported version changes
 
 Additionally, before bumping our minimum supported browser versions, we should always notify users in the application first. Otherwise users of older browser versions would unknowingly get stuck on old MetaMask versions, even if they had automatic updates enabled.

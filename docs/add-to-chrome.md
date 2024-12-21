@@ -4,6 +4,7 @@
 
 * Create a local build of MetaMask using your preferred method.
   * You can find build instructions in the [readme](https://github.com/MetaMask/metamask-extension#readme).
+  * Note: Before building, make sure to update dependencies by running `yarn install`.
 * Open `Settings` > `Extensions`.
   * Or go straight to [chrome://extensions](chrome://extensions).
 * Check "Developer mode".
