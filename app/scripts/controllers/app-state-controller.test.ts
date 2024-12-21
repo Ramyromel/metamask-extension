@@ -727,4 +727,31 @@ describe('AppStateController', () => {
       ).toStrictEqual(timeNow);
     });
   });
+
+  describe('_resetTimer', () => {
+    it('should reset the timer when called', () => {
+      const spy = jest.spyOn(
+        appStateController as unknown as { _resetTimer: () => void },
+        '_resetTimer',
+      );
+      appStateController.setLastActiveTime();
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('should not reset the timer if autoLockTimeLimit is 0', () => {
+      const spy = jest.spyOn(
+        appStateController as unknown as { _resetTimer: () => void },
+        '_resetTimer',
+      );
+      controllerMessenger.publish(
+        'PreferencesController:stateChange',
+        {
+          preferences: { autoLockTimeLimit: 0 },
+        } as unknown as PreferencesControllerState,
+        [],
+      );
+      appStateController.setLastActiveTime();
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
 });

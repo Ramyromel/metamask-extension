@@ -15,7 +15,15 @@ export class Poller {
       return;
     }
 
-    this.#handle = setInterval(this.#callback, this.#interval);
+    const executeCallback = async () => {
+      try {
+        await this.#callback();
+      } catch (error) {
+        console.error('Error executing callback:', error);
+      }
+    };
+
+    this.#handle = setInterval(executeCallback, this.#interval);
   }
 
   stop() {

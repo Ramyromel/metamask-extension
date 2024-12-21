@@ -759,6 +759,55 @@ describe('AccountTrackerController', () => {
         });
       });
     });
+
+    it('should handle errors gracefully when updating accounts', async () => {
+      await withController(
+        {
+          completedOnboarding: true,
+          useMultiAccountBalanceChecker: true,
+          getNetworkIdentifier: jest
+            .fn()
+            .mockReturnValue('http://not-localhost:8545'),
+          getSelectedAccount: jest.fn().mockReturnValue({
+            id: 'accountId',
+            address: VALID_ADDRESS,
+          } as InternalAccount),
+          state: {
+            accounts: { ...mockAccounts },
+            accountsByChainId: {
+              [currentChainId]: { ...mockAccounts },
+            },
+          },
+        },
+        async ({ controller }) => {
+          const consoleErrorSpy = jest
+            .spyOn(console, 'error')
+            .mockImplementation(() => {});
+
+          // Simulate an error in the provider
+          const { provider } = createTestProviderTools({
+            scaffold: {
+              eth_getBalance: () => {
+                throw new Error('Test error');
+              },
+            },
+            networkId: currentNetworkId,
+            chainId: currentNetworkId,
+          });
+
+          controller.provider = provider as Provider;
+
+          await controller.updateAccounts('mainnet');
+
+          expect(consoleErrorSpy).toHaveBeenCalledWith(
+            'Error executing callback:',
+            expect.any(Error),
+          );
+
+          consoleErrorSpy.mockRestore();
+        },
+      );
+    });
   });
 
   describe('onAccountRemoved', () => {

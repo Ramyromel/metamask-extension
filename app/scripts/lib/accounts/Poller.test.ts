@@ -56,4 +56,32 @@ describe('Poller', () => {
     poller.stop();
     expect(callback).not.toHaveBeenCalled();
   });
+
+  it('handles errors in the callback function gracefully', async () => {
+    const error = new Error('Test error');
+    callback.mockImplementation(() => {
+      throw error;
+    });
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    const poller = new Poller(callback, interval);
+    poller.start();
+    jest.advanceTimersByTime(intervalPlus100ms);
+    poller.stop();
+
+    expect(callback).toHaveBeenCalledTimes(1);
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Error executing callback:', error);
+
+    consoleErrorSpy.mockRestore();
+  });
+
+  it('does not start a new interval if already running', async () => {
+    const poller = new Poller(callback, interval);
+    poller.start();
+    poller.start();
+    jest.advanceTimersByTime(intervalPlus100ms);
+    poller.stop();
+
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
 });
