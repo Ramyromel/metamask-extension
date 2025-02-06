@@ -61,4 +61,20 @@ const MyComponent = ({ id }) => {
 - New packages should only be integrated if the application doesn’t have the existing functionality and it cannot be added by implementing a small utility function. Use the https://snyk.io/advisor/ to assess the popularity, maintainability and security analysis. The package must be in good standing to be added to the project.
 - Update existing dependencies when you notice they are out of date.
 
-[Source](https://www.makeuseof.com/must-follow-react-practices/)
+### 11. Conduct Regular Code Reviews
+- Conduct regular code reviews to ensure that the codebase follows best practices and coding standards.
+- Code reviews help identify potential issues, improve code quality, and facilitate knowledge sharing among team members.
+
+### 12. Refactor Code for Readability and Maintainability
+- Refactor code to improve readability, maintainability, and performance.
+- Break down large functions or components into smaller, more manageable pieces.
+- Use meaningful variable and function names to enhance code clarity.
+
+### 13. Implement Static Code Analysis Tools
+- Implement static code analysis tools to catch potential issues before they become problems.
+- Use tools like ESLint, Prettier, and TypeScript to enforce coding standards and identify potential errors.
+
+### 14. Ensure Tests are Up-to-Date
+- Ensure that all tests are up-to-date and cover all critical functionality.
+- Regularly review and update tests to reflect changes in the codebase.
+- Use code coverage tools to identify areas of the code that need additional testing.
