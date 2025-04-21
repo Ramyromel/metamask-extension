@@ -8,6 +8,17 @@ The below diagram outlines our process for design, development, and release. Bui
 
 <img width="664" alt="mm-dev-process" src="https://user-images.githubusercontent.com/1016190/56308059-36906000-60fb-11e9-8e61-6655bca0c54f.png">
 
+## Table of Contents
+
+1. [Preparation](#preparation)
+2. [Incrementing Version & Changelog](#incrementing-version--changelog)
+3. [Preparing for Sensitive Changes](#preparing-for-sensitive-changes)
+4. [Building](#building)
+5. [Publishing](#publishing)
+6. [Hotfix Differences](#hotfix-differences)
+7. [Detailed Usage Examples](#detailed-usage-examples)
+8. [Visual Aids](#visual-aids)
+9. [Video Tutorials](#video-tutorials)
 
 ## Preparation
 
@@ -54,3 +65,59 @@ For this reason, when an urgent change is needed in production, its pull request
 - Should be proposed against the `master` branch.
 
 The version and changelog bump should then be made off the `master` branch, and then merged to `develop` to bring the two branches back into sync. Further time can be saved by incorporating the version/changelog bump into the PR against `master`, since we rely on @MetaMaskBot to run tests before merging.
+
+## Detailed Usage Examples
+
+### Example 1: Publishing a New Version
+
+1. Create a branch with the name `Version-vX.Y.Z`.
+2. Push the branch to the repository.
+3. Wait for the CircleCI build to complete and create a Pull Request.
+4. Review the Pull Request and merge it into the `master` branch.
+5. Download the build artifacts from the CircleCI build.
+6. Follow the steps in the [Publishing](#publishing) section to publish the new version.
+
+### Example 2: Preparing a Rollback Release
+
+1. Create a branch off of the latest release with the name `Version-vX.Y.Z-rollback`.
+2. Increment the patch version number in the app manifest and changelog.
+3. Push the branch to the repository.
+4. Wait for the CircleCI build to complete and create a Pull Request.
+5. Review the Pull Request and merge it into the `master` branch.
+6. Download the build artifacts from the CircleCI build.
+7. Keep the rollback release ready for immediate deployment in case of emergency.
+
+## Visual Aids
+
+### Diagram: MetaMask Development Process
+
+![MetaMask Development Process](https://user-images.githubusercontent.com/1016190/56308059-36906000-60fb-11e9-8e61-6655bca0c54f.png)
+
+### Flowchart: Publishing Process
+
+```mermaid
+graph TD;
+    A[Start] --> B[Create Version Branch];
+    B --> C[Push Branch to Repository];
+    C --> D[Wait for CircleCI Build];
+    D --> E[Review and Merge Pull Request];
+    E --> F[Download Build Artifacts];
+    F --> G[Publish to Chrome Store];
+    F --> H[Publish to Firefox Addon Marketplace];
+    F --> I[Publish to Opera Store];
+    G --> J[Post on Github Releases];
+    H --> J;
+    I --> J;
+    J --> K[Run yarn announce Script];
+    K --> L[End];
+```
+
+## Video Tutorials
+
+### Tutorial 1: Publishing a New Version
+
+[![Publishing a New Version](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+### Tutorial 2: Preparing a Rollback Release
+
+[![Preparing a Rollback Release](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
