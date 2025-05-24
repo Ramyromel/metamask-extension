@@ -255,7 +255,7 @@
   "dependencies": {
     "@babel/runtime": "7.26.10",
     "@blockaid/ppom_release": "^1.5.3",
-    "@ensdomains/content-hash": "^2.5.7",
+    "@ensdomains/content-hash": "^3.0.0",
     "@ethereumjs/tx": "^4.1.1",
     "@ethersproject/abi": "^5.6.4",
     "@ethersproject/bignumber": "^5.7.0",
