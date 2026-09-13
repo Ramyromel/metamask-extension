@@ -31,7 +31,9 @@
 
   "forwardPorts": [5901, 6080],
 
-  "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
 
   "name": "MM Extension Codespace",
 
